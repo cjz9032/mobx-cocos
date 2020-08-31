@@ -1,5 +1,6 @@
 // tslint:disable: variable-name
-import { autorun, IReactionDisposer, IReactionPublic, reaction } from "mobx";
+import { autorun, configure, IReactionDisposer, IReactionPublic, reaction } from "mobx";
+configure({ enforceActions: "observed" });
 export const observer = <T extends new (...args: any[]) => any>(Constructor: T) => {
   return class extends Constructor {
     public __disposer: IReactionDisposer[] = [];
